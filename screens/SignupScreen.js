@@ -14,17 +14,6 @@ const SignupScreen = () => {
 
     const navigation = useNavigation()
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, user => {
-            if (user) {
-                setTimeout(() => {
-                    navigation.replace("Home")
-                  }, 1000);
-            }
-        })
-        return unsubscribe
-    }, [])
-
 
     const handleSignUp = () => {
         if (password !== passwordConfirmation) {

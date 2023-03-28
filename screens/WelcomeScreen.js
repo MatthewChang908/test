@@ -7,14 +7,6 @@ import {auth} from "../firebase";
 const WelcomeScreen = () => {
 
     const navigation = useNavigation()
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, user => {
-            if (user) {
-                navigation.replace("Home")
-            }
-        })
-        return unsubscribe
-    }, [])
 
   return (
     <View className='bg-dark-grey flex-1 flex-col justify-between items-center'>
