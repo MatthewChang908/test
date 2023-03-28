@@ -10,15 +10,6 @@ const LoginScreen = () => {
     const [password, setPassword] = useState('')
     const navigation = useNavigation()
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, user => {
-            if (user) {
-                navigation.replace("Home")
-            }
-        })
-        return unsubscribe
-    }, [])
-
     const handleLogin = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => {
