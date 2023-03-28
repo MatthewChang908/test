@@ -1,10 +1,20 @@
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import React, {useEffect} from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/core'
+import {auth} from "../firebase";
 
 const WelcomeScreen = () => {
 
     const navigation = useNavigation()
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, user => {
+            if (user) {
+                navigation.replace("Home")
+            }
+        })
+        return unsubscribe
+    }, [])
 
   return (
     <View className='bg-dark-grey flex-1 flex-col justify-between items-center'>
